@@ -1,12 +1,10 @@
-import WelcomeText from "./components/WelcomeText";
-import DatePicker from "./components/DatePicker";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
-      <WelcomeText />
-      <DatePicker />
-    </>
+    <div className="w-full h-screen bg-slate-200">
+      <Home />
+    </div>
   );
 }
 
