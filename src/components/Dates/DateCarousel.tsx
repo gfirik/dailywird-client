@@ -16,8 +16,7 @@ export default function CarouselSize({
   const [visibleDates, setVisibleDates] = useState<Date[]>([]);
 
   const initDaysRange = 30;
-  const initStartIndex = initDaysRange / 2 - 2;
-  const startIndexRef = useRef<number>(initStartIndex);
+  const startIndexRef = useRef<number>(0);
 
   useEffect(() => {
     generateVisibleDates(selectedDate, initDaysRange);
