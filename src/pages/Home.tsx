@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TempMain from "@/components/TempMain";
+import MainFeed from "@/components/Feed/MainFeed";
 import WelcomeText from "@/components/WelcomeText";
 import CarouselSize from "@/components/Dates/DateCarousel";
 
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col items-center">
       <WelcomeText />
       <CarouselSize onDateChange={handleDateChange} />
-      <TempMain selectedDate={selectedDate} />
+      <MainFeed selectedDate={selectedDate} />
     </div>
   );
 }
