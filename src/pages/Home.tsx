@@ -8,11 +8,14 @@ export default function Home() {
   const handleDateChange = (newDate: Date) => {
     setSelectedDate(newDate);
   };
+
   return (
-    <div className="flex flex-col items-center">
-      <WelcomeText />
-      <CarouselSize onDateChange={handleDateChange} />
-      <MainFeed selectedDate={selectedDate} />
+    <div className="w-full max-w-md">
+      <div className="flex flex-col items-center">
+        <WelcomeText />
+        <CarouselSize onDateChange={handleDateChange} />
+        <MainFeed selectedDate={selectedDate} />
+      </div>
     </div>
   );
 }

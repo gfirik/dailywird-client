@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { addDays, format, isSameDay } from "date-fns";
+import { addDays, format, isSameDay, isToday } from "date-fns";
 
 export default function CarouselSize({
   onDateChange,
@@ -60,29 +59,34 @@ export default function CarouselSize({
   };
 
   return (
-    <div>
+    <div className="w-full max-w-md">
       <Carousel
         opts={{
           startIndex: startIndexRef.current,
         }}
-        className="w-full max-w-sm p-3 border-2 border-black"
+        className="max-w-sm min-w-full mt-2"
       >
         <CarouselContent>
           {visibleDates.map((date: Date, index: number) => (
             <CarouselItem key={index} className="basis-1/5">
               <div className="p-1">
-                <Card>
-                  <CardContent
-                    className={`flex aspect-square items-center justify-center p-6 ${
-                      isSameDay(date, selectedDate) ? "bg-slate-500" : ""
+                <div
+                  className={`w-full flex aspect-square flex-col items-center justify-center p-2 text-neutral-500 ${
+                    isSameDay(date, selectedDate)
+                      ? "bg-neutral-400 rounded-lg"
+                      : ""
+                  } ${isToday(date) ? "text-red-700" : ""}`}
+                  onClick={() => handleDateClick(date)}
+                >
+                  <span className="mt-2 text-xs">{format(date, "eee")}</span>
+                  <span
+                    className={`text-3xl font-semibold ${
+                      isSameDay(date, selectedDate) ? "text-neutral-800" : ""
                     }`}
-                    onClick={() => handleDateClick(date)}
                   >
-                    <span className="text-3xl font-semibold">
-                      {format(date, "dd")}
-                    </span>
-                  </CardContent>
-                </Card>
+                    {parseInt(format(date, "dd")).toString()}
+                  </span>
+                </div>
               </div>
             </CarouselItem>
           ))}
